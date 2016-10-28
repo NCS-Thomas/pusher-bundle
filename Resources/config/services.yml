@@ -1,0 +1,29 @@
+services:
+    lsv_pusher.logger:
+        class: Lsv\PusherBundle\Log\Logger
+        public: false
+        lazy: true
+
+    lsv_pusher.pusher:
+        class: Lsv\PusherBundle\Service\PusherService
+        arguments:
+            - "%lsv_pusher.key%"
+            - "%lsv_pusher.secret%"
+            - "%lsv_pusher.app_id%"
+            - "%lsv_pusher.configuration%"
+        calls:
+            - [setEventDispatcher, ['@event_dispatcher']]
+        lazy: true
+
+    lsv_pusher.collector:
+        class: Lsv\PusherBundle\DataCollector\TriggerCollector
+        arguments: ["@lsv_pusher.logger"]
+        public: false
+        tags:
+            - { name: data_collector, template: LsvPusherBundle::debug, id: lsv_pusher }
+
+    lsv_pusher.event.listener:
+        class: Lsv\PusherBundle\Listener\ProfilerListener
+        arguments: ["@lsv_pusher.logger"]
+        tags:
+            - { name: kernel.event_subscriber }
