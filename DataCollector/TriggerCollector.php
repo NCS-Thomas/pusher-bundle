@@ -53,4 +53,9 @@ class TriggerCollector extends DataCollector
     {
         return 'lsv_pusher';
     }
+    
+    public function reset()
+    {
+    	$this->data = []:
+    }
 }
