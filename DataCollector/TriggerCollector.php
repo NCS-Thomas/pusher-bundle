@@ -56,6 +56,6 @@ class TriggerCollector extends DataCollector
     
     public function reset()
     {
-    	$this->data = []:
+    	$this->data = [];
     }
 }
