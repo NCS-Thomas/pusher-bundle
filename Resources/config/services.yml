@@ -20,7 +20,7 @@ services:
         arguments: ["@lsv_pusher.logger"]
         public: false
         tags:
-            - { name: data_collector, template: LsvPusherBundle::debug, id: lsv_pusher }
+            - { name: data_collector, template: '@LsvPusher/debug.html.twig', id: lsv_pusher }
 
     lsv_pusher.event.listener:
         class: Lsv\PusherBundle\Listener\ProfilerListener
