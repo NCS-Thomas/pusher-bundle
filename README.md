@@ -1,7 +1,7 @@
 Lsv Pusher Bundle
 =================
 
-Pusher.com bundle for symfony
+Pusher.com bundle for symfony, and it is very cool
 
 # Install
 
